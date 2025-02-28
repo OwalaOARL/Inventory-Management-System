@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import LoginPage from "./Components/LoginPage";
+import Navbar from "./Components/Navbar.js";
+import LoginPage from "./Components/LoginPage.js";
 
-function App() {
+
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-      </Routes>
-    </Router>
+    <div>
+      <Navbar />
+      <LoginPage />
+    </div>
   );
-}
+};
 
 export default App;

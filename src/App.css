@@ -1,56 +1,6 @@
-/* LoginPage.css */
-
-
-
-.top-bar {
-  width: 100%;
-  height: 100px;
-  background-color: #6a1b9a; /* Purple */
-}
-
-.content {
-  text-align: center;
-  padding: 20px;
-}
-
-.login-image {
-  width: 250px;
-  margin-bottom: 20px;
-}
-
-.title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #6a1b9a;
-}
-
-.login-button {
-  background-color: #6a1b9a;
-  color: white;
-  padding: 12px 24px;
-  font-size: 16px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-button:hover {
-  background-color: blue; /* Darker purple */
-}
-
-.new-user-text {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #666;
-}
-
-.create-account {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.create-account:hover {
-  text-decoration: underline;
-}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
