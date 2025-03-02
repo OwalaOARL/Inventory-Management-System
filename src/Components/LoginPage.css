@@ -1,23 +1,23 @@
-.login-page {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  .illustration {
-    width: 200px;
-    margin-bottom: 20px;
-  }
-  
-  .create-account {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .create-account:hover {
-    text-decoration: underline;
-  }
+.Loginpage{
+  text-align: center;
+}
 
-  .login-page.p{
-    color: #800080;
-    
-  }
+
+
+.img-container{
+  
+
+  margin-bottom: 20px;
+
+}
+
+.title-container{
+  color: purple;
+  font-size: x-large;
+}
+
+.create-account{
+  color: #007bff;
+text-decoration: none;
+
+}

@@ -2,14 +2,27 @@ import React from "react";
 import Button from "./Button";
 import "./LoginPage.css";
 
+
 const LoginPage = () => {
   return (
-    <div className="login-page">
-      <img src="/assets/login-image.png" alt="Shopping" className="illustration" />
-      <p>Find Your Agent....</p>
-      <Button text="Login" onClick={() => alert("Login Clicked")} />
-      <p>New user? <a href="/create-account" className="create-account">Create Account</a></p>
-    </div>
+    <div className="Loginpage">
+  <div className="img-container">
+    <img src="/assets/login-image.png" alt="login-image" className="illustration" />
+  </div>
+
+  <div className="title-container">
+    <p className="login-text">Find Your Agent....</p>
+  </div>
+
+  <div className="button-container">
+    <Button text="Login" onClick={() => alert("Login Clicked")} />
+  </div>
+
+  <div className="account-container">
+    <p>New user? <a href="/create-account" className="create-account">Create Account</a></p>
+  </div>
+</div>
+
   );
 };
 
