@@ -1,0 +1,22 @@
+.sidebar {
+    width: 16rem;
+    height: 100vh;
+    background-color: rgb(248, 242, 248);
+    color: purple;
+  
+  }
+  
+  .menu-item {
+    padding: 1rem;
+    cursor: pointer;
+  }
+  
+  .menu-item:hover {
+    background-color: plum;
+  }
+  
+  .active {
+    background-color: EEE1E1;
+    color: purple;
+  }
+  
