@@ -1,0 +1,30 @@
+/* Sidebar.css */
+.sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 2px solid #800080;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-item {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #800080;
+    text-align: center;
+    color: #800080;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    background-color: #e0c0ff;
+  }
+  
+  
+  
