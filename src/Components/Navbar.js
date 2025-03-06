@@ -3,11 +3,9 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-content">
-  
-        <a href="/profile" className="navbar-link" style={{ textDecoration: 'none', marginLeft: 'auto' }}>My Profile</a>
-      </div>
+    <nav className="navbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <span className="navbar-title"></span>
+      <a href="/profile" className="navbar-link" style={{ textDecoration: 'none' }}>My Profile</a>
     </nav>
   );
 };

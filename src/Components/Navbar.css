@@ -10,4 +10,6 @@
 .navbar-link{
   color: white;
   align-content: right;
+  font-size: small;
+  margin-left: auto;
 }
