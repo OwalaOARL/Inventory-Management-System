@@ -1,0 +1,16 @@
+.navbar {
+    background-color:rgb(89, 89, 242);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    height: 4rem;
+  }
+  
+  .navbar-link{
+    color: white;
+    align-content: right;
+    font-size: small;
+    padding: 25px;
+    
+  }
