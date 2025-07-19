@@ -3,12 +3,12 @@ import { Container, Card, CardBody, Row, Col } from 'reactstrap';
 import Navbar from '../../Common/NavBar/Navbar';
 
 const AgentDetails = () => {
-  // Example agent data – you can later pass this as props or fetch dynamically
+  // Example agent details (can be dynamic later)
   const agent = {
     name: 'John Alex',
-    email: 'johnalex@example.com',
     company: 'Munchee',
     location: 'Colombo',
+    contact: '+94 712345678',
   };
 
   return (
@@ -37,11 +37,6 @@ const AgentDetails = () => {
             </Row>
 
             <Row className="mb-4">
-              <Col md={4}><strong>Email:</strong></Col>
-              <Col md={8}>{agent.email}</Col>
-            </Row>
-
-            <Row className="mb-4">
               <Col md={4}><strong>Company:</strong></Col>
               <Col md={8}>{agent.company}</Col>
             </Row>
@@ -49,6 +44,11 @@ const AgentDetails = () => {
             <Row className="mb-4">
               <Col md={4}><strong>Location:</strong></Col>
               <Col md={8}>{agent.location}</Col>
+            </Row>
+
+            <Row className="mb-4">
+              <Col md={4}><strong>Contact:</strong></Col>
+              <Col md={8}>{agent.contact}</Col>
             </Row>
           </CardBody>
         </Card>
