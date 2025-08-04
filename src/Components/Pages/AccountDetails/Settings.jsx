@@ -48,7 +48,7 @@ const Settings = () => {
     borderRadius: '4px',
     fontSize: '14px',
     color: '#292F63',
-    backgroundColor: '#F2FBFF', // optional soft background for inputs
+    backgroundColor: 'white', // optional soft background for inputs
   };
 
   const buttonStyle = {
@@ -59,7 +59,7 @@ const Settings = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#D2EFF7', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: 'White', minHeight: '100vh' }}>
       <Navbar />
       <Container className="mt-5 d-flex justify-content-center">
         <Card

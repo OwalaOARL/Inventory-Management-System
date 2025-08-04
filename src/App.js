@@ -15,8 +15,7 @@ const App = () => {
   return (
     <div>
      
-      <Navbar/>
-      <LowStock />
+      <MyAccount/>
    
     </div>
   );

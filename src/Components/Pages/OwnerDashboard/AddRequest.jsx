@@ -71,135 +71,137 @@ const AddRequest = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="h-100 d-flex justify-content-center align-items-center mt-5">
       <ToastContainer />
-      <Card className="shadow-sm border-0 rounded">
-        <CardBody>
-          {/* Filters */}
-          <Row className="mb-4 align-items-end">
-            <Col md={3}>
-              <label>Company</label>
-              <Input type="select">
-                <option>CBL</option>
-                <option>Maliban</option>
-                <option>Munchee</option>
-              </Input>
-            </Col>
-            <Col md={3}>
-              <label>Location</label>
-              <Input type="select">
-                <option>Ratnapura</option>
-                <option>Colombo</option>
-                <option>Galle</option>
-              </Input>
-            </Col>
-            <Col md={3}>
-              <label>Product Category</label>
-              <Input type="select">
-                <option>Biscuit</option>
-                <option>Snacks</option>
-                <option>Drinks</option>
-              </Input>
-            </Col>
-            <Col md={3}>
-              <Button color="primary" className="w-100">
-                <FaSearch className="me-2" /> Search
-              </Button>
-            </Col>
-          </Row>
+      <Card className="shadow w-100">
+        <CardBody className="d-flex justify-content-center align-items-center" style={{ minHeight: "100%" }}>
+          <div className="w-100" style={{ maxWidth: "1000px" }}>
+            {/* Filters */}
+            <Row className="mb-4 align-items-end">
+              <Col md={3}>
+                <label>Company</label>
+                <Input type="select">
+                  <option>CBL</option>
+                  <option>Maliban</option>
+                  <option>Munchee</option>
+                </Input>
+              </Col>
+              <Col md={3}>
+                <label>Location</label>
+                <Input type="select">
+                  <option>Ratnapura</option>
+                  <option>Colombo</option>
+                  <option>Galle</option>
+                </Input>
+              </Col>
+              <Col md={3}>
+                <label>Product Category</label>
+                <Input type="select">
+                  <option>Biscuit</option>
+                  <option>Snacks</option>
+                  <option>Drinks</option>
+                </Input>
+              </Col>
+              <Col md={3}>
+                <Button color="primary" className="w-100">
+                  <FaSearch className="me-2" /> Search
+                </Button>
+              </Col>
+            </Row>
 
-          {/* Agent Cards */}
-          {agentData.map((agent) => (
-            <div
-              key={agent.id}
-              className="mb-3 p-3 shadow-sm"
-              style={{
-                backgroundColor: "#d9f3fc",
-                borderRadius: "10px",
-                position: "relative",
-              }}
-            >
-              <Row className="align-items-start">
-                <Col md="auto">
-                  <img
-                    src={agent.image}
-                    alt="agent"
-                    style={{
-                      width: "100px",
-                      height: "120px",
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                    }}
+            {/* Agent Cards */}
+            {agentData.map((agent) => (
+              <div
+                key={agent.id}
+                className="mb-3 p-3 shadow-sm"
+                style={{
+                  backgroundColor: "#d9f3fc",
+                  borderRadius: "10px",
+                  position: "relative",
+                }}
+              >
+                <Row className="align-items-start">
+                  <Col md="auto">
+                    <img
+                      src={agent.image}
+                      alt="agent"
+                      style={{
+                        width: "100px",
+                        height: "120px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                    />
+                  </Col>
+
+                  <Col>
+                    <p><strong>Name</strong>: {agent.name}</p>
+                    <p><strong>Company</strong>: {agent.company}</p>
+                    <p><strong>Product Category</strong>: {agent.category}</p>
+                    <p><strong>Location</strong>: {agent.location}</p>
+                    <p><strong>Contact</strong>: {agent.contact}</p>
+                  </Col>
+
+                  <Col md="auto" className="d-flex justify-content-end">
+                    <Button
+                      color="primary"
+                      className="mt-2"
+                      onClick={() => handleAddRequestClick(agent)}
+                    >
+                      Add Request
+                    </Button>
+                  </Col>
+                </Row>
+              </div>
+            ))}
+
+            {/* Modal */}
+            <Modal isOpen={modalOpen} toggle={toggleModal}>
+              <ModalHeader toggle={toggleModal}>
+                Add Request for {selectedAgent?.name}
+              </ModalHeader>
+              <ModalBody>
+                <FormGroup>
+                  <Label for="productName">Product Name</Label>
+                  <Input
+                    id="productName"
+                    type="text"
+                    placeholder="Enter product name"
+                    value={productName}
+                    onChange={(e) => setProductName(e.target.value)}
                   />
-                </Col>
-
-                <Col>
-                  <p><strong>Name</strong>: {agent.name}</p>
-                  <p><strong>Company</strong>: {agent.company}</p>
-                  <p><strong>Product Category</strong>: {agent.category}</p>
-                  <p><strong>Location</strong>: {agent.location}</p>
-                  <p><strong>Contact</strong>: {agent.contact}</p>
-                </Col>
-
-                <Col md="auto" className="d-flex justify-content-end">
-                  <Button
-                    color="primary"
-                    className="mt-2"
-                    onClick={() => handleAddRequestClick(agent)}
-                  >
-                    Add Request
-                  </Button>
-                </Col>
-              </Row>
-            </div>
-          ))}
-
-          {/* Modal */}
-          <Modal isOpen={modalOpen} toggle={toggleModal}>
-            <ModalHeader toggle={toggleModal}>
-              Add Request for {selectedAgent?.name}
-            </ModalHeader>
-            <ModalBody>
-              <FormGroup>
-                <Label for="productName">Product Name</Label>
-                <Input
-                  id="productName"
-                  type="text"
-                  placeholder="Enter product name"
-                  value={productName}
-                  onChange={(e) => setProductName(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="productDetails">Product Details</Label>
-                <Input
-                  id="productDetails"
-                  type="text"
-                  placeholder="Enter product details"
-                  value={productDetails}
-                  onChange={(e) => setProductDetails(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="quantity">Quantity</Label>
-                <Input
-                  id="quantity"
-                  type="number"
-                  placeholder="Enter quantity"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-              </FormGroup>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={handleSubmit}>
-                Submit Request
-              </Button>
-              <Button color="secondary" onClick={toggleModal}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </Modal>
+                </FormGroup>
+                <FormGroup>
+                  <Label for="productDetails">Product Details</Label>
+                  <Input
+                    id="productDetails"
+                    type="text"
+                    placeholder="Enter product details"
+                    value={productDetails}
+                    onChange={(e) => setProductDetails(e.target.value)}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="quantity">Quantity</Label>
+                  <Input
+                    id="quantity"
+                    type="number"
+                    placeholder="Enter quantity"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
+                </FormGroup>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={handleSubmit}>
+                  Submit Request
+                </Button>
+                <Button color="secondary" onClick={toggleModal}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </div>
         </CardBody>
       </Card>
     </Container>
