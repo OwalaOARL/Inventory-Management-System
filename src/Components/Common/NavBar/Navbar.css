@@ -1,15 +1,158 @@
+/* Navbar Styles */
 .navbar {
   background-color: rgb(89, 89, 242);
   color: white;
   padding: 1rem;
-  text-align: center;
   font-size: 1.5rem;
-  height: 5rem; /* increased from 4rem to 5rem */
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: visible !important;
+  z-index: 1;
 }
 
-.navbar-link {
+.navbar-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+/* Profile Dropdown Container */
+.profile-dropdown-container {
+  position: relative !important;
+  display: inline-block;
+  z-index: 1000;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: none;
+  border: none;
   color: white;
-  align-content: right;
-  font-size: small;
-  padding: 25px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profile-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Dropdown Menu (default hidden) */
+.dropdown-menu {
+  position: absolute !important;
+  right: 0;
+  top: calc(100% + 12px); /* Increased gap here */
+  width: 160px; /* Reduced width here */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  z-index: 9999 !important;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* Show Dropdown */
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-content {
+  padding: 8px 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  /* Use a fixed width for the icon container to align text properly */
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #1f2937;
+}
+
+.dropdown-item svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-right: 12px; /* fixed space between icon and text */
+  display: inline-block;
+}
+
+/* Logout item special styling */
+.logout-item {
+  color: #dc2626 !important;
+}
+
+.logout-item:hover {
+  background-color: #fef2f2 !important;
+  color: #b91c1c !important;
+}
+
+/* Divider */
+.dropdown-divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem;
+    height: auto;
+    min-height: 4rem;
+  }
+
+  .navbar-title {
+    font-size: 1rem;
+  }
+
+  .profile-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .dropdown-menu {
+    width: 140px; /* reduced accordingly for smaller screens */
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+  }
+
+  .profile-dropdown-container {
+    align-self: flex-end;
+  }
 }

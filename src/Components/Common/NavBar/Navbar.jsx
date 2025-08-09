@@ -1,11 +1,37 @@
 import React from "react";
+import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
+
 import "./Navbar.css";
 
 const Navbar = () => {
+  const handleMyAccount = () => {
+    console.log("Navigate to My Account");
+  };
+
+  const handleSettings = () => {
+    console.log("Navigate to Settings");
+  };
+
+  const handleAgents = () => {
+    console.log("Navigate to Agents");
+  };
+
+  const handleLogout = () => {
+    console.log("Logging out...");
+  };
+
   return (
-    <nav className="navbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <span className="navbar-title"></span>
-      <a href="/profile" className="navbar-link" style={{ textDecoration: 'none' }}>My Profile</a>
+    <nav className="navbar">
+      <span className="navbar-title">Inventory Management System</span>
+
+      {/* Profile Dropdown */}
+      <ProfileDropdown
+        onMyAccount={handleMyAccount}
+        onSettings={handleSettings}
+        onAgents={handleAgents}
+        onLogout={handleLogout}
+        username="My Profile"
+      />
     </nav>
   );
 };
