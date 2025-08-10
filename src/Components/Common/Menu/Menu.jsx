@@ -1,11 +1,26 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Home, User, Settings, LogOut } from "lucide-react";
+import {
+  Home,
+  User,
+  Settings,
+  LogOut,
+  Users,
+  PackageMinus,
+  ClipboardList,
+  Clock,
+  CheckCircle
+} from "lucide-react";
 import "./Menu.css";
 
 const Menu = () => {
   const menuItems = [
     { name: "Home", path: "/", icon: <Home size={18} /> },
+    { name: "Agent Details", path: "/agent-details", icon: <Users size={18} /> },
+    { name: "Low Stock", path: "/low-stock", icon: <PackageMinus size={18} /> },
+    { name: "Order Requests", path: "/order-requests", icon: <ClipboardList size={18} /> },
+    { name: "Pending Deliveries", path: "/pending-deliveries", icon: <Clock size={18} /> },
+    { name: "Completed Deliveries", path: "/completed-deliveries", icon: <CheckCircle size={18} /> },
     { name: "Profile", path: "/profile", icon: <User size={18} /> },
     { name: "Settings", path: "/settings", icon: <Settings size={18} /> },
     { name: "Logout", path: "/logout", icon: <LogOut size={18} /> },

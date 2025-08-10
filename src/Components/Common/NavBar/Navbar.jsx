@@ -1,6 +1,5 @@
 import React from "react";
 import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
-
 import "./Navbar.css";
 
 const Navbar = () => {

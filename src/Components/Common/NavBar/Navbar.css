@@ -8,9 +8,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+
+  /* FIX: Make navbar fixed at top */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
   overflow: visible !important;
-  z-index: 1;
+  z-index: 1100; /* higher than side menu */
 }
 
 .navbar-title {
@@ -53,8 +59,8 @@
 .dropdown-menu {
   position: absolute !important;
   right: 0;
-  top: calc(100% + 12px); /* Increased gap here */
-  width: 160px; /* Reduced width here */
+  top: calc(100% + 12px);
+  width: 160px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -81,7 +87,6 @@
 .dropdown-item {
   display: flex;
   align-items: center;
-  /* Use a fixed width for the icon container to align text properly */
   padding: 12px 20px;
   font-size: 14px;
   color: #374151;
@@ -101,11 +106,9 @@
   flex-shrink: 0;
   width: 18px;
   height: 18px;
-  margin-right: 12px; /* fixed space between icon and text */
-  display: inline-block;
+  margin-right: 12px;
 }
 
-/* Logout item special styling */
 .logout-item {
   color: #dc2626 !important;
 }
@@ -115,32 +118,28 @@
   color: #b91c1c !important;
 }
 
-/* Divider */
 .dropdown-divider {
   border: none;
   border-top: 1px solid #e5e7eb;
   margin: 8px 0;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .navbar {
     padding: 0.75rem;
     height: auto;
     min-height: 4rem;
   }
-
   .navbar-title {
     font-size: 1rem;
   }
-
   .profile-button {
     padding: 6px 12px;
     font-size: 13px;
   }
-
   .dropdown-menu {
-    width: 140px; /* reduced accordingly for smaller screens */
+    width: 140px;
     right: 0;
   }
 }
@@ -151,7 +150,6 @@
     gap: 10px;
     padding: 1rem;
   }
-
   .profile-dropdown-container {
     align-self: flex-end;
   }
