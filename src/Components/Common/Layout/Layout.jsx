@@ -1,27 +1,28 @@
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "../NavBar/Navbar";
+import { Outlet } from "react-router-dom"; // 👈 important
 import Menu from "../Menu/Menu";
+import Navbar from "../NavBar/Navbar"; // matches file name exactly
+
 import "./Layout.css";
 
 const Layout = () => {
-  const location = useLocation();
-
-  // Pages without Navbar + Menu
-  const hideNavAndMenu = ["/", "/create-account"];
-  const shouldHide = hideNavAndMenu.includes(location.pathname);
-
-  return shouldHide ? (
-    <div className="layout-main">
-      <Outlet />
-    </div>
-  ) : (
-    <div className="layout-container">
-      <Navbar />
-      <div className="layout-content">
+  return (
+    <div className="layout">
+      {/* Sidebar */}
+      <aside className="sidebar">
         <Menu />
-        <main className="layout-main">
-          <Outlet />
+      </aside>
+
+      {/* Main Section */}
+      <div className="main-section">
+        {/* Top Navbar */}
+        <header className="top-navbar">
+          <Navbar />
+        </header>
+
+        {/* Page Content */}
+        <main className="page-content">
+          <Outlet /> {/* 👈 renders child routes here */}
         </main>
       </div>
     </div>

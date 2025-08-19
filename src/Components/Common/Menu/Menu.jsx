@@ -1,37 +1,33 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
-  Home,
   User,
   Settings,
-  LogOut,
   Users,
   PackageMinus,
-  ClipboardList,
-  Clock,
-  CheckCircle
+  PlusSquare
 } from "lucide-react";
-import "./Menu.css";
+import "./Menu.css"; // Make sure Menu.css exists in the same folder
 
 const Menu = () => {
   const menuItems = [
-    { name: "Home", path: "/", icon: <Home size={18} /> },
+    { name: "My Account", path: "/my-account", icon: <User size={18} /> },
+    { name: "Settings", path: "/settings", icon: <Settings size={18} /> },
+    { name: "Agent", path: "/agent", icon: <Users size={18} /> },
     { name: "Agent Details", path: "/agent-details", icon: <Users size={18} /> },
     { name: "Low Stock", path: "/low-stock", icon: <PackageMinus size={18} /> },
-    { name: "Order Requests", path: "/order-requests", icon: <ClipboardList size={18} /> },
-    { name: "Pending Deliveries", path: "/pending-deliveries", icon: <Clock size={18} /> },
-    { name: "Completed Deliveries", path: "/completed-deliveries", icon: <CheckCircle size={18} /> },
-    { name: "Profile", path: "/profile", icon: <User size={18} /> },
-    { name: "Settings", path: "/settings", icon: <Settings size={18} /> },
-    { name: "Logout", path: "/logout", icon: <LogOut size={18} /> },
+    { name: "Add Request", path: "/add-request", icon: <PlusSquare size={18} /> },
+    { name: "Pending Deliveries", path: "/pending-deliveries", icon: <PlusSquare size={18} /> },
+    { name: "Completed Deliveries", path: "/completed-deliveries", icon: <PlusSquare size={18} /> },
+
   ];
 
   return (
     <div className="sidebar">
       <div className="sidebar-header">My App</div>
       <ul className="sidebar-menu">
-        {menuItems.map((item, index) => (
-          <li key={index}>
+        {menuItems.map((item) => (
+          <li key={item.path}>
             <NavLink
               to={item.path}
               className={({ isActive }) =>

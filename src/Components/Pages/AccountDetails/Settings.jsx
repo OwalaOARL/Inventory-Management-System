@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '../../Common/NavBar/Navbar';
+
 import {
   Container,
   Card,
@@ -60,7 +60,7 @@ const Settings = () => {
 
   return (
     <div style={{ backgroundColor: 'White', minHeight: '100vh' }}>
-      <Navbar />
+      
       <Container className="mt-5 d-flex justify-content-center">
         <Card
           className="shadow"

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '../../Common/NavBar/Navbar';
+
 import {
   Container,
   Input,
@@ -27,7 +27,7 @@ const Agent = () => {
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#292F63' }}>
-      <Navbar />
+     
 
       <Container className="mt-5">
         {/* Search Bar */}

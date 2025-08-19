@@ -11,7 +11,7 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
-import Navbar from '../../Common/NavBar/Navbar';
+
 
 const MyAccount = () => {
   const [logoutModal, setLogoutModal] = useState(false);
@@ -39,7 +39,7 @@ const MyAccount = () => {
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      <Navbar />
+      
 
       <Container className="mt-5 d-flex justify-content-center">
         <Card

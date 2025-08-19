@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Card, CardBody, Row, Col } from 'reactstrap';
-import Navbar from '../../Common/NavBar/Navbar';
+
 
 const AgentDetails = () => {
   // Example agent details (can be dynamic later)
@@ -13,7 +13,7 @@ const AgentDetails = () => {
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      <Navbar />
+    
 
       <Container className="mt-5 d-flex justify-content-center">
         <Card
