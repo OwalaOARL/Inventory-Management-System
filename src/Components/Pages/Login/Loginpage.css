@@ -1,121 +1,118 @@
 /* src/components/LoginPage.css */
 
 .login-page {
-    display: flex;
-    min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Left side styling */
+.login-left {
+  width: 50%;
+  background-color: #2563eb; /* Tailwind blue-600 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.homeImage {
+  width: 80%;          /* keep it balanced */
+  max-width: 400px;    /* prevent too large */
+  height: auto;        /* maintain ratio */
+  border-radius: 12px;
+  object-fit: contain;
   
-  /* Left side styling */
-  .login-left {
-    width: 50%;
-    background-color: #2563eb; /* Tailwind blue-600 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-  
-  .login-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-  }
-  
-  /* Right side styling */
-  .login-right {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-  }
-  
-  .login-form-container {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .login-form-container h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 5rem;
-  }
-  
-  .login-form-container h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-  
-  .login-form-container label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-weight: 500;
-    
-  }
-  
-  .login-form-container input {
-    width: 100%;
-    padding: 0.6rem;
-    margin-bottom: 1rem;
-    background-color: #f3f4f6;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    
-    
-  }
-  
-  .google-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.6rem;
-    margin-bottom: 1rem;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .google-button img {
-    height: 20px;
-    width: 20px;
-  }
-  
-  .login-button {
-    width: 100%;
-    padding: 0.6rem;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 0.5rem;
-  }
-  
-  .login-button:hover {
-    background-color: #1d4ed8; /* Tailwind blue-700 */
-  }
-  
-  .signup-link {
-    text-align: center;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .signup-link a {
-    color: #2563eb;
-    text-decoration: none;
-  }
-  
-  .signup-link a:hover {
-    text-decoration: underline;
-  }
-  
+}
+
+/* Right side styling */
+.login-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5rem;
+}
+
+.login-form-container h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.login-form-container label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.login-form-container input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  background-color: #f3f4f6;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.google-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.google-button img {
+  height: 20px;
+  width: 20px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.login-button:hover {
+  background-color: #1d4ed8; /* Tailwind blue-700 */
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}

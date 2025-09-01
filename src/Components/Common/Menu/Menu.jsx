@@ -5,21 +5,23 @@ import {
   Settings,
   Users,
   PackageMinus,
-  PlusSquare
+  PlusSquare,
+  Truck,
+  CheckSquare,
 } from "lucide-react";
 import "./Menu.css"; // Make sure Menu.css exists in the same folder
 
 const Menu = () => {
   const menuItems = [
-    { name: "My Account", path: "/my-account", icon: <User size={18} /> },
-    { name: "Settings", path: "/settings", icon: <Settings size={18} /> },
-    { name: "Agent", path: "/agent", icon: <Users size={18} /> },
-    { name: "Agent Details", path: "/agent-details", icon: <Users size={18} /> },
-    { name: "Low Stock", path: "/low-stock", icon: <PackageMinus size={18} /> },
-    { name: "Add Request", path: "/add-request", icon: <PlusSquare size={18} /> },
-    { name: "Pending Deliveries", path: "/pending-deliveries", icon: <PlusSquare size={18} /> },
-    { name: "Completed Deliveries", path: "/completed-deliveries", icon: <PlusSquare size={18} /> },
-
+    { name: "Dashboard", path: "/dashboard/dashboard", icon: <User size={18} /> },
+    { name: "My Account", path: "/dashboard/my-account", icon: <User size={18} /> },
+    { name: "Settings", path: "/dashboard/settings", icon: <Settings size={18} /> },
+    { name: "Agent", path: "/dashboard/agent", icon: <Users size={18} /> },
+    { name: "Agent Details", path: "/dashboard/agent-details", icon: <Users size={18} /> },
+    { name: "Low Stock", path: "/dashboard/low-stock", icon: <PackageMinus size={18} /> },
+    { name: "Add Request", path: "/dashboard/add-request", icon: <PlusSquare size={18} /> },
+    { name: "Pending Deliveries", path: "/dashboard/pending-deliveries", icon: <Truck size={18} /> },
+    { name: "Completed Deliveries", path: "/dashboard/completed-deliveries", icon: <CheckSquare size={18} /> },
   ];
 
   return (

@@ -1,16 +1,28 @@
 import React from 'react';
 import './Loginpage.css';
 import { Container, Card, CardBody } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import homeImage from "../../../Assets/home.png";
+
 
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault(); // Prevent form reload
+    // Redirect to dashboard (Menu will load as part of Layout)
+    navigate("/dashboard/my-account"); 
+  };
+
   return (
     <div className="login-page">
       {/* Left side */}
       <div className="login-left">
         <img
-          src="/Assets/home.png" // Place your image here
+          src={homeImage}   // ✅ Use the imported image
           className="homeImage"
+          alt="Home"
         />
       </div>
 
@@ -24,7 +36,7 @@ const LoginPage = () => {
                 <h1>Welcome Back</h1>
                 <h2>Login</h2>
 
-                <form>
+                <form onSubmit={handleLogin}>
                   <label htmlFor="email">Email</label>
                   <input type="email" id="email" placeholder="Enter your email" />
 
@@ -45,7 +57,10 @@ const LoginPage = () => {
                 </form>
 
                 <p className="signup-link">
-                  Don’t have an account? <a href="#">Create an account</a>
+                  Don’t have an account?{" "}
+                  <a onClick={() => navigate("/create-account")} href="#!">
+                    Create an account
+                  </a>
                 </p>
 
               </div>
