@@ -10,6 +10,7 @@ import {
   CheckSquare,
 } from "lucide-react";
 import "./Menu.css"; // Make sure Menu.css exists in the same folder
+import homeIcon from "../../../Assets/home.png"; // ✅ Correct path
 
 const Menu = () => {
   const menuItems = [
@@ -26,7 +27,15 @@ const Menu = () => {
 
   return (
     <div className="sidebar">
-      <div className="sidebar-header">My App</div>
+      {/* ✅ Replace "My App" with home.png */}
+      <div className="sidebar-header">
+        <img
+          src={homeIcon}
+          alt="Home"
+          style={{ width: "70px", height: "70px", objectFit: "contain" }} // small size
+        />
+      </div>
+
       <ul className="sidebar-menu">
         {menuItems.map((item) => (
           <li key={item.path}>

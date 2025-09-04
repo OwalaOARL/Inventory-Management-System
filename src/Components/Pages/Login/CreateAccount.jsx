@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Card, CardBody } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import homeImage from "../../../Assets/home.png"; // ✅ Import image properly
+import homeImage from "../../../Assets/home.png";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ const CreateAccount = () => {
       confirmButtonColor: "#2563eb"
     }).then((result) => {
       if (result.isConfirmed) {
-        // Redirect to dashboard
-        navigate("/dashboard");
+        // ✅ Redirect to dashboard inside Layout
+        navigate("/dashboard/dashboard");
       }
     });
   };
@@ -90,7 +90,7 @@ const CreateAccount = () => {
   );
 };
 
-// ✅ Inline styles object
+// ✅ Inline styles
 const styles = {
   loginPage: {
     display: "flex",
@@ -99,7 +99,7 @@ const styles = {
   },
   loginLeft: {
     width: "50%",
-    backgroundColor: "#2563eb", // Tailwind blue-600
+    backgroundColor: "#2563eb",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -111,7 +111,6 @@ const styles = {
     height: "auto",
     borderRadius: "12px",
     objectFit: "contain",
-    
   },
   loginRight: {
     width: "50%",

@@ -18,14 +18,14 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Default route now shows LoginPage */}
+        {/* Default route -> LoginPage */}
         <Route path="/" element={<Loginpage />} />
 
         {/* Routes without layout */}
         <Route path="/login" element={<Loginpage />} />
         <Route path="/create-account" element={<CreateAccount />} />
 
-        {/* Routes with layout */}
+        {/* Routes with sidebar layout */}
         <Route path="/dashboard" element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="my-account" element={<MyAccount />} />

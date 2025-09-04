@@ -4,15 +4,13 @@ import { Container, Card, CardBody } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import homeImage from "../../../Assets/home.png";
 
-
-
 const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent form reload
-    // Redirect to dashboard (Menu will load as part of Layout)
-    navigate("/dashboard/my-account"); 
+    // Redirect to main dashboard page
+    navigate("/dashboard/dashboard"); 
   };
 
   return (

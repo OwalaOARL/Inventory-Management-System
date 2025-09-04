@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { User, Settings, Users, LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import "../NavBar/Navbar.css";
-
 
 const ProfileDropdown = ({
   onMyAccount,
@@ -13,6 +13,7 @@ const ProfileDropdown = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate(); // ✅ Hook for navigation
 
   // Close dropdown on outside click or Escape
   useEffect(() => {
@@ -43,6 +44,11 @@ const ProfileDropdown = ({
   const handleMenuClick = (action) => {
     setIsOpen(false);
     if (action) action();
+  };
+
+  const handleLogoutClick = () => {
+    if (onLogout) onLogout(); // Call optional logout logic
+    navigate("/login"); // ✅ Redirect to login
   };
 
   return (
@@ -83,7 +89,7 @@ const ProfileDropdown = ({
           <hr className="dropdown-divider" />
 
           <button
-            onClick={() => handleMenuClick(onLogout)}
+            onClick={handleLogoutClick} // ✅ Redirect to login
             className="dropdown-item logout-item"
           >
             <LogOut size={16} />
