@@ -18,7 +18,6 @@ import { FaSearch } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const agentData = [
   {
     id: 1,
@@ -75,36 +74,83 @@ const AddRequest = () => {
     <Container className="h-100 d-flex justify-content-center align-items-center mt-5">
       <ToastContainer />
       <Card className="shadow w-100">
-        <CardBody className="d-flex justify-content-center align-items-center" style={{ minHeight: "100%" }}>
+        <CardBody
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "100%" }}
+        >
           <div className="w-100" style={{ maxWidth: "1000px" }}>
             {/* Filters */}
             <Row className="mb-4 align-items-end">
               <Col md={3}>
                 <label>Company</label>
                 <Input type="select">
-                  <option>CBL</option>
-                  <option>Maliban</option>
-                  <option>Munchee</option>
-                </Input>
+  <option>CBL (Ceylon Biscuits Limited)</option>
+  <option>Maliban</option>
+  <option>Munchee</option>
+  <option>Prima</option>
+  <option>CIC Holdings</option>
+  <option>Elephant House</option>
+  <option>Anchor</option>
+  <option>Kotmale</option>
+  <option>Wijaya Products</option>
+  <option>Harischandra</option>
+</Input>
+
               </Col>
               <Col md={3}>
                 <label>Location</label>
                 <Input type="select">
-                  <option>Ratnapura</option>
-                  <option>Colombo</option>
-                  <option>Galle</option>
-                </Input>
+  <option>Colombo</option>
+  <option>Gampaha</option>
+  <option>Kandy</option>
+  <option>Kalutara</option>
+  <option>Galle</option>
+  <option>Matara</option>
+  <option>Hambantota</option>
+  <option>Jaffna</option>
+  <option>Trincomalee</option>
+  <option>Anuradhapura</option>
+  <option>Polonnaruwa</option>
+  <option>Kurunegala</option>
+  <option>Puttalam</option>
+  <option>Ratnapura</option>
+  <option>Badulla</option>
+  <option>Monaragala</option>
+  <option>Nuwara Eliya</option>
+  <option>Mullaitivu</option>
+  <option>Vavuniya</option>
+</Input>
+
               </Col>
               <Col md={3}>
                 <label>Product Category</label>
                 <Input type="select">
-                  <option>Biscuit</option>
-                  <option>Snacks</option>
-                  <option>Drinks</option>
-                </Input>
+  <option>Biscuit</option>
+  <option>Snacks</option>
+  <option>Drinks</option>
+  <option>Chocolates</option>
+  <option>Cereals</option>
+  <option>Spices & Condiments</option>
+  <option>Rice & Grains</option>
+  <option>Flours & Baking</option>
+  <option>Cooking Oil</option>
+  <option>Dairy Products</option>
+  <option>Instant Noodles</option>
+  <option>Tea & Coffee</option>
+  <option>Jam & Honey</option>
+  <option>Frozen Foods</option>
+  <option>Cleaning Supplies</option>
+</Input>
+
               </Col>
               <Col md={3}>
-                <Button color="primary" className="w-100">
+                <Button
+                  style={{
+                    backgroundColor: "rgb(89, 89, 242)",
+                    borderColor: "rgb(89, 89, 242)",
+                  }}
+                  className="w-100 text-white hover:opacity-90 transition"
+                >
                   <FaSearch className="me-2" /> Search
                 </Button>
               </Col>
@@ -136,17 +182,30 @@ const AddRequest = () => {
                   </Col>
 
                   <Col>
-                    <p><strong>Name</strong>: {agent.name}</p>
-                    <p><strong>Company</strong>: {agent.company}</p>
-                    <p><strong>Product Category</strong>: {agent.category}</p>
-                    <p><strong>Location</strong>: {agent.location}</p>
-                    <p><strong>Contact</strong>: {agent.contact}</p>
+                    <p style={{ color: "#292F63" }}>
+                      <strong>Name</strong>: {agent.name}
+                    </p>
+                    <p style={{ color: "#292F63" }}>
+                      <strong>Company</strong>: {agent.company}
+                    </p>
+                    <p style={{ color: "#292F63" }}>
+                      <strong>Product Category</strong>: {agent.category}
+                    </p>
+                    <p style={{ color: "#292F63" }}>
+                      <strong>Location</strong>: {agent.location}
+                    </p>
+                    <p style={{ color: "#292F63" }}>
+                      <strong>Contact</strong>: {agent.contact}
+                    </p>
                   </Col>
 
                   <Col md="auto" className="d-flex justify-content-end">
                     <Button
-                      color="primary"
-                      className="mt-2"
+                      style={{
+                        backgroundColor: "rgb(89, 89, 242)",
+                        borderColor: "rgb(89, 89, 242)",
+                      }}
+                      className="mt-2 text-white hover:opacity-90 transition"
                       onClick={() => handleAddRequestClick(agent)}
                     >
                       Add Request
@@ -194,7 +253,14 @@ const AddRequest = () => {
                 </FormGroup>
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" onClick={handleSubmit}>
+                <Button
+                  style={{
+                    backgroundColor: "rgb(89, 89, 242)",
+                    borderColor: "rgb(89, 89, 242)",
+                  }}
+                  className="text-white hover:opacity-90 transition"
+                  onClick={handleSubmit}
+                >
                   Submit Request
                 </Button>
                 <Button color="secondary" onClick={toggleModal}>

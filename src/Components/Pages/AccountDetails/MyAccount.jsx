@@ -81,9 +81,14 @@ const MyAccount = () => {
               <Button color="danger" onClick={toggleDeleteModal}>
                 Delete Account
               </Button>
-              <Button color="primary" onClick={toggleLogoutModal}>
-                Log out
-              </Button>
+              <Button
+  onClick={toggleLogoutModal}
+  style={{ backgroundColor: "rgb(89, 89, 242)", borderColor: "rgb(89, 89, 242)" }}
+  className="text-white hover:opacity-90 transition"
+>
+  Log out
+</Button>
+
             </div>
           </CardBody>
         </Card>

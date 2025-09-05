@@ -51,12 +51,6 @@ const Settings = () => {
     backgroundColor: 'white', // optional soft background for inputs
   };
 
-  const buttonStyle = {
-    width: '180px',
-    fontWeight: '500',
-    backgroundColor: '#292F63',
-    border: 'none',
-  };
 
   return (
     <div style={{ backgroundColor: 'White', minHeight: '100vh' }}>
@@ -138,9 +132,14 @@ const Settings = () => {
               </Row>
 
               <div className="text-center mb-5">
-                <Button type="submit" color="primary" style={buttonStyle}>
-                  Update Details
-                </Button>
+                <Button
+  type="submit"
+  style={{ backgroundColor: "rgb(89, 89, 242)", borderColor: "rgb(89, 89, 242)" }}
+  className="text-white hover:opacity-90 transition"
+>
+  Update Details
+</Button>
+
               </div>
             </Form>
 
@@ -188,9 +187,14 @@ const Settings = () => {
               </FormGroup>
 
               <div className="text-center">
-                <Button type="submit" color="primary" style={buttonStyle}>
-                  Change password
-                </Button>
+                <Button
+  type="submit"
+  style={{ backgroundColor: "rgb(89, 89, 242)", borderColor: "rgb(89, 89, 242)" }}
+  className="text-white hover:opacity-90 transition"
+>
+  Change password
+</Button>
+
               </div>
             </Form>
           </CardBody>
