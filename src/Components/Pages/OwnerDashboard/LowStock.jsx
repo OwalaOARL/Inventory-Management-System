@@ -6,15 +6,11 @@ const lowStockItems = [
     id: 1,
     name: "Chocolate Wafers",
     quantity: 5,
-    image:
-      "https://www.britannia.co.in/Uploads/Product/63110058ccad4_choco_wafers.png", // Replace with your local image if needed
   },
   {
     id: 2,
     name: "Treat Biscuits",
     quantity: 5,
-    image:
-      "https://www.britannia.co.in/Uploads/Product/63a42b5e2c201_Treat_Original.png", // Replace with your local image if needed
   },
 ];
 
@@ -40,25 +36,21 @@ const LowStock = () => {
                 flexWrap: "wrap",
               }}
             >
-              {/* Product Image */}
-              <img
-                src={item.image}
-                alt={item.name}
+              {/* Product Name */}
+              <p
                 style={{
-                  width: "120px",
-                  height: "100px",
-                  objectFit: "contain",
-                  backgroundColor: "#fff",
-                  padding: "5px",
+                  fontWeight: "bold",
+                  margin: "0 20px 0 0",
+                  color: "#333",
                 }}
-              />
-
-              {/* Stock Message */}
-              <p style={{ color: "red",  margin: "0 20px" }}>
-                Stock is low
+              >
+                {item.name}
               </p>
 
-              {/* Quantity Input */}
+              {/* Stock Message */}
+              <p style={{ color: "red", margin: "0 20px" }}>Stock is low</p>
+
+              {/* Quantity Display */}
               <div style={{ display: "flex", alignItems: "center" }}>
                 <label
                   htmlFor={`qty-${item.id}`}

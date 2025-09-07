@@ -3,7 +3,6 @@ import React from "react";
 const deliveries = [
   {
     store: "Hiru Stores",
-    image: "https://via.placeholder.com/120x80?text=Lemon+Puff", // replace with actual image
     product: "Lemon Puff",
     weight: "200g",
     price: "Rs. 230",
@@ -11,7 +10,6 @@ const deliveries = [
   },
   {
     store: "Araliya Stores",
-    image: "https://via.placeholder.com/120x80?text=Cream+Cracker",
     product: "Cream Cracker",
     weight: "200g",
     price: "Rs. 120",
@@ -19,7 +17,6 @@ const deliveries = [
   },
   {
     store: "Hiru Stores",
-    image: "https://via.placeholder.com/120x80?text=Lemon+Puff",
     product: "Lemon Puff",
     weight: "200g",
     price: "Rs. 230",
@@ -27,7 +24,6 @@ const deliveries = [
   },
   {
     store: "Araliya Stores",
-    image: "https://via.placeholder.com/120x80?text=Cream+Cracker",
     product: "Cream Cracker",
     weight: "200g",
     price: "Rs. 120",
@@ -58,11 +54,6 @@ const PendingDelivery = () => {
           font-weight: 600;
           width: 150px;
         }
-        .product-image img {
-          max-width: 120px;
-          height: auto;
-          border-radius: 4px;
-        }
         .product-details {
           flex: 1;
           text-align: left;
@@ -86,16 +77,14 @@ const PendingDelivery = () => {
           <div className="delivery-card" key={index}>
             {/* Store Name */}
             <div className="store-name">{delivery.store}</div>
-            {/* Product Image */}
-            <div className="product-image">
-              <img src={delivery.image} alt={delivery.product} />
-            </div>
+
             {/* Product Details */}
             <div className="product-details">
               <p className="product-name">{delivery.product}</p>
               <p>{delivery.weight}</p>
               <p>{delivery.price}</p>
             </div>
+
             {/* Quantity */}
             <div className="product-qty">Qty: {delivery.qty}</div>
           </div>
