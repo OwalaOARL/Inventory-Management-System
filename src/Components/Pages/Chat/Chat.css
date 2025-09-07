@@ -36,7 +36,7 @@
   flex: 1;
   padding: 15px;
   overflow-y: auto;
-  background-color: #f1f1f1;
+  background-color:white;
   display: flex;
   flex-direction: column;
 }
@@ -50,7 +50,7 @@
 }
 
 .chat-message.agent {
-  background-color: #e0e0e0; /* light grey */
+  background-color: #d9f3fc; /* light grey */
   color: #000;
   align-self: flex-start; /* left side */
 }
