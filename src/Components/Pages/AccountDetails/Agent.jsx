@@ -8,14 +8,15 @@ import {
 import { FaUserCircle, FaSearch } from 'react-icons/fa';
 
 const agentsData = [
-  { name: 'John Alex', company: 'Munchee' },
-  { name: 'John Alex', company: 'Maliban' },
-  { name: 'John Alex', company: 'Tiyara' },
-  { name: 'John Alex', company: 'Risbury' },
-  { name: 'John Alex', company: 'Kandox' },
-  { name: 'John Alex', company: 'Sunlight' },
-  { name: 'John Alex', company: 'Magic' },
+  { name: 'Saman Perera', company: 'Munchee' },
+  { name: 'Nimal Silva', company: 'Maliban' },
+  { name: 'Kamal Fernando', company: 'Tiyara' },
+  { name: 'Ruwan Jayasinghe', company: 'Risbury' },
+  { name: 'Anura Bandara', company: 'Kandox' },
+  { name: 'Chathura Gunawardena', company: 'Sunlight' },
+  { name: 'Pradeep Senanayake', company: 'Magic' },
 ];
+
 
 const Agent = () => {
   const [searchTerm, setSearchTerm] = useState('');
