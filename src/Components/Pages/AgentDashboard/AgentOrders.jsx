@@ -16,15 +16,16 @@ import {
   Card,
   CardBody,
   Row,
-  Col
+  Col,
+  Spinner
 } from 'reactstrap';
-import { FaClipboardList, FaCheckCircle, FaTimesCircle, FaClock, FaPlus, FaEye, FaEdit } from 'react-icons/fa';
+import { FaClipboardList, FaCheckCircle, FaTimesCircle, FaClock, FaEye, FaCheck, FaTimes, FaEdit } from 'react-icons/fa';
 import { useAuth } from '../../../context/AuthContext';
 import DataTable from '../../Common/DataTable/DataTable';
-import AddNewOrder from './AddNewOrder';
-import OrderChat from '../Chat/OrderChat'; 
+import OrderChat from '../Chat/OrderChat';
+import StatusUpdateModal from '../Chat/StatusUpdateModal';
 
-const AddRequest = () => {
+const AgentOrders = () => {
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('pending');
   const [orders, setOrders] = useState({
@@ -39,9 +40,10 @@ const AddRequest = () => {
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [showAddOrderModal, setShowAddOrderModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showOrderModal, setShowOrderModal] = useState(false);
+  const [showStatusModal, setShowStatusModal] = useState(false);
+  const [actionLoading, setActionLoading] = useState(false);
 
   // API base URL
   const API_BASE_URL = 'http://localhost:5000/api';
@@ -98,32 +100,40 @@ const AddRequest = () => {
     }
   };
 
-  // Handle order view with chat
+  // Handle order view
   const handleViewOrder = (order) => {
     setSelectedOrder(order);
     setShowOrderModal(true);
   };
 
-  // Handle order edit
-  const handleEditOrder = (order) => {
-    console.log('Edit order:', order);
-    setSuccess(`Edit functionality for Order #${order.ORDER_ID} will be implemented`);
+  // Handle status update modal
+  const handleStatusUpdateModal = (order) => {
+    setSelectedOrder(order);
+    setShowStatusModal(true);
   };
 
-  // Handle add new order modal close
-  const handleAddOrderClose = () => {
-    setShowAddOrderModal(false);
-    refreshAllOrders(); // Refresh orders when modal closes
+  // Handle status update success
+  const handleStatusUpdateSuccess = () => {
+    setSuccess('Order status updated successfully!');
+    refreshAllOrders();
+    setShowStatusModal(false);
+    setShowOrderModal(false);
   };
 
-  // Handle chat update (when new messages are sent)
-  const handleChatUpdate = () => {
-    // Optionally refresh orders or show success message
-    setSuccess('Message sent successfully!');
+  // Handle order status update directly from table (quick action)
+  const handleQuickStatusUpdate = async (orderId, newStatus) => {
+    // For quick actions, open the status modal to require a reason
+    const order = [...orders.pending, ...orders.completed, ...orders.rejected]
+      .find(o => o.ORDER_ID === orderId);
+    
+    if (order) {
+      setSelectedOrder(order);
+      setShowStatusModal(true);
+    }
   };
 
-  // Define table columns for owner view
-  const getOwnerTableColumns = () => [
+  // Define table columns with action buttons for agents
+  const getAgentTableColumns = () => [
     {
       title: 'Order ID',
       key: 'ORDER_ID',
@@ -232,15 +242,17 @@ const AddRequest = () => {
           >
             <FaEye size={12} />
           </Button>
-          <Button
-            size="sm"
-            color="warning"
-            onClick={() => handleEditOrder(row)}
-            title="Edit Order"
-            style={{ padding: '4px 8px', minWidth: '30px' }}
-          >
-            <FaEdit size={12} />
-          </Button>
+          {row.STATUS === 'PENDING' && (
+            <Button
+              size="sm"
+              color="warning"
+              onClick={() => handleStatusUpdateModal(row)}
+              title="Update Status"
+              style={{ padding: '4px 8px', minWidth: '30px' }}
+            >
+              <FaEdit size={12} />
+            </Button>
+          )}
         </div>
       )
     }
@@ -290,17 +302,16 @@ const AddRequest = () => {
                   Order Management
                 </h2>
                 <p style={{ margin: 0, color: '#6c757d', fontSize: '14px' }}>
-                  Manage and track order requests with integrated communication
+                  View and manage order requests with integrated chat
                 </p>
               </div>
             </div>
             <Button
-              color="success"
-              onClick={() => setShowAddOrderModal(true)}
+              color="primary"
+              onClick={refreshAllOrders}
               style={{ fontWeight: '500' }}
             >
-              <FaPlus className="me-2" />
-              Add New Order
+              Refresh Orders
             </Button>
           </div>
         </div>
@@ -374,7 +385,7 @@ const AddRequest = () => {
                 <div style={{ padding: '20px' }}>
                   <DataTable
                     data={orders[tab]}
-                    columns={getOwnerTableColumns()}
+                    columns={getAgentTableColumns()}
                     loading={loading[tab]}
                     searchPlaceholder={`Search ${tab} orders...`}
                     emptyMessage={`No ${tab} orders found`}
@@ -434,22 +445,7 @@ const AddRequest = () => {
           })}
         </div>
 
-        {/* Add New Order Modal */}
-        <Modal 
-          isOpen={showAddOrderModal} 
-          toggle={() => setShowAddOrderModal(false)}
-          size="xl"
-          style={{ maxWidth: '95vw' }}
-        >
-          <ModalHeader toggle={() => setShowAddOrderModal(false)}>
-            Add New Orders
-          </ModalHeader>
-          <ModalBody style={{ padding: 0 }}>
-            <AddNewOrder onClose={handleAddOrderClose} />
-          </ModalBody>
-        </Modal>
-
-        {/* Enhanced Order Details Modal with Chat - Same as Agent View */}
+        {/* Enhanced Order Details Modal with Chat */}
         <Modal 
           isOpen={showOrderModal} 
           toggle={() => setShowOrderModal(false)}
@@ -485,8 +481,8 @@ const AddRequest = () => {
                             <strong style={{ color: '#292F63' }}>Order Details:</strong>
                             <div style={{ marginTop: '5px' }}>
                               <div><strong>Quantity:</strong> {selectedOrder.QUANTITY}</div>
-                              <div><strong>Unit Price:</strong> {parseFloat(selectedOrder.UNIT_PRICE || 0).toFixed(2)}</div>
-                              <div><strong>Total Value:</strong> {((parseFloat(selectedOrder.UNIT_PRICE) || 0) * (parseInt(selectedOrder.QUANTITY) || 0)).toFixed(2)}</div>
+                              <div><strong>Unit Price:</strong> ${parseFloat(selectedOrder.UNIT_PRICE || 0).toFixed(2)}</div>
+                              <div><strong>Total Value:</strong> ${((parseFloat(selectedOrder.UNIT_PRICE) || 0) * (parseInt(selectedOrder.QUANTITY) || 0)).toFixed(2)}</div>
                             </div>
                           </div>
 
@@ -505,21 +501,8 @@ const AddRequest = () => {
                               </div>
                             </div>
                           </div>
-
-                          <div style={{ marginBottom: '15px' }}>
-                            <strong style={{ color: '#292F63' }}>Agent Information:</strong>
-                            <div style={{ marginTop: '5px' }}>
-                              <div><strong>Assigned Agent:</strong> {selectedOrder.AGENT_NAME || 'Unassigned'}</div>
-                              {selectedOrder.AGENT_EMAIL && (
-                                <div><strong>Agent Email:</strong> {selectedOrder.AGENT_EMAIL}</div>
-                              )}
-                              {selectedOrder.AGENT_CONTACT && (
-                                <div><strong>Agent Contact:</strong> {selectedOrder.AGENT_CONTACT}</div>
-                              )}
-                            </div>
-                          </div>
                           
-                          {/* <div style={{ marginBottom: '15px' }}>
+                          <div style={{ marginBottom: '15px' }}>
                             <strong style={{ color: '#292F63' }}>Dates:</strong>
                             <div style={{ marginTop: '5px' }}>
                               <div><strong>Created:</strong> {new Date(selectedOrder.CREATED_DATE).toLocaleString()}</div>
@@ -527,10 +510,10 @@ const AddRequest = () => {
                                 <div><strong>Updated:</strong> {new Date(selectedOrder.UPDATED_DATE).toLocaleString()}</div>
                               )}
                             </div>
-                          </div> */}
+                          </div>
 
                           <div style={{ marginBottom: '15px' }}>
-                            <strong style={{ color: '#292F63' }}>Original Description:</strong>
+                            <strong style={{ color: '#292F63' }}>Description:</strong>
                             <div style={{ 
                               marginTop: '5px', 
                               padding: '10px', 
@@ -546,7 +529,7 @@ const AddRequest = () => {
                   </Card>
                 </Col>
 
-                {/* Right side - Chat Platform */}
+                {/* Right side - Chat */}
                 <Col md={6} style={{ 
                   padding: '20px',
                   display: 'flex',
@@ -555,31 +538,39 @@ const AddRequest = () => {
                   <OrderChat 
                     orderId={selectedOrder.ORDER_ID}
                     currentUser={user}
-                    onStatusUpdate={handleChatUpdate}
+                    onStatusUpdate={handleStatusUpdateSuccess}
                   />
                 </Col>
               </Row>
             )}
           </ModalBody>
           <ModalFooter>
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              alignItems: 'center',
-              width: '100%'
-            }}>
-              <div style={{ fontSize: '14px', color: '#6c757d' }}>
-                <strong>Owner View:</strong> You can communicate with agents and monitor order progress
-              </div>
-              <Button color="secondary" onClick={() => setShowOrderModal(false)}>
-                Close
+            {selectedOrder?.STATUS === 'PENDING' && (
+              <Button
+                color="warning"
+                onClick={() => handleStatusUpdateModal(selectedOrder)}
+              >
+                <FaEdit className="me-2" />
+                Update Status
               </Button>
-            </div>
+            )}
+            <Button color="secondary" onClick={() => setShowOrderModal(false)}>
+              Close
+            </Button>
           </ModalFooter>
         </Modal>
+
+        {/* Status Update Modal */}
+        <StatusUpdateModal
+          isOpen={showStatusModal}
+          toggle={() => setShowStatusModal(false)}
+          order={selectedOrder}
+          onStatusUpdate={handleStatusUpdateSuccess}
+          currentUser={user}
+        />
       </Container>
     </div>
   );
 };
 
-export default AddRequest;
+export default AgentOrders;

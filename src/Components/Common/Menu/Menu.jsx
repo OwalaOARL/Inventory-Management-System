@@ -9,36 +9,99 @@ import {
   Truck,
   CheckSquare,
 } from "lucide-react";
-import "./Menu.css"; // Make sure Menu.css exists in the same folder
-import homeIcon from "../../../Assets/home.png"; // ✅ Correct path
+import { useAuth } from "../../../context/AuthContext"; // Import your auth context
+import "./Menu.css";
+import homeIcon from "../../../Assets/home.png";
 
 const Menu = () => {
-  const menuItems = [
-    { name: "Dashboard", path: "/dashboard/dashboard", icon: <User size={18} /> },
-    { name: "My Account", path: "/dashboard/my-account", icon: <User size={18} /> },
-    { name: "Settings", path: "/dashboard/settings", icon: <Settings size={18} /> },
-    { name: "Agent", path: "/dashboard/agent", icon: <Users size={18} /> },
-    { name: "Agent Details", path: "/dashboard/agent-details", icon: <Users size={18} /> },
-    { name: "Low Stock", path: "/dashboard/low-stock", icon: <PackageMinus size={18} /> },
-    { name: "Add Request", path: "/dashboard/add-request", icon: <PlusSquare size={18} /> },
-    { name: "Pending Deliveries", path: "/dashboard/pending-deliveries", icon: <Truck size={18} /> },
-    { name: "Completed Deliveries", path: "/dashboard/completed-deliveries", icon: <CheckSquare size={18} /> },
-  ];
+  const { user } = useAuth(); // Get current user info
+  
+  // Get user role
+  const userRole = user?.roleName;
+
+  // Define menu items based on role
+  const getMenuItems = () => {
+    const commonItems = [
+      {
+        name: "Dashboard",
+        path: "/dashboard/dashboard",
+        icon: <User size={18} />,
+        roles: ["OWNER", "ADMIN", "AGENT"]
+      },
+      {
+        name: "My Account",
+        path: "/dashboard/my-account",
+        icon: <User size={18} />,
+        roles: ["OWNER", "ADMIN", "AGENT"]
+      },
+      {
+        name: "Settings",
+        path: "/dashboard/settings",
+        icon: <Settings size={18} />,
+        roles: ["OWNER", "ADMIN", "AGENT"]
+      }
+    ];
+
+    const ownerAdminItems = [
+      {
+        name: "Agent",
+        path: "/dashboard/agent",
+        icon: <Users size={18} />,
+        roles: ["OWNER", "ADMIN"]
+      },
+      {
+        name: "Agent Details",
+        path: "/dashboard/agent-details",
+        icon: <Users size={18} />,
+        roles: ["OWNER", "ADMIN"]
+      },
+      {
+        name: "Low Stock",
+        path: "/dashboard/low-stock",
+        icon: <PackageMinus size={18} />,
+        roles: ["OWNER", "ADMIN"]
+      }
+    ];
+
+    const orderItems = [
+      // Owner/Admin Orders (with add functionality)
+      {
+        name: "Orders",
+        path: "/dashboard/add-request",
+        icon: <PlusSquare size={18} />,
+        roles: ["OWNER", "ADMIN"]
+      },
+      // Agent Orders (view and manage only)
+      {
+        name: "Orders",
+        path: "/dashboard/orders",
+        icon: <PlusSquare size={18} />,
+        roles: ["AGENT"]
+      }
+    ];
+
+    // Combine all items
+    const allItems = [...commonItems, ...ownerAdminItems, ...orderItems];
+    
+    // Filter items based on user role
+    return allItems.filter(item => item.roles.includes(userRole));
+  };
+
+  const menuItems = getMenuItems();
 
   return (
     <div className="sidebar">
-      {/* ✅ Replace "My App" with home.png */}
       <div className="sidebar-header">
         <img
           src={homeIcon}
           alt="Home"
-          style={{ width: "70px", height: "70px", objectFit: "contain" }} // small size
+          style={{ width: "70px", height: "70px", objectFit: "contain" }}
         />
       </div>
 
       <ul className="sidebar-menu">
-        {menuItems.map((item) => (
-          <li key={item.path}>
+        {menuItems.map((item, index) => (
+          <li key={`${item.path}-${index}`}> {/* Use unique key */}
             <NavLink
               to={item.path}
               className={({ isActive }) =>
